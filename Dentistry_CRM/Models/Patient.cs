@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dentistry_CRM.Models
+﻿namespace Dentistry_CRM.Models
 {
-    class Patient
+    public class Patient : Person
     {
+        private string _dubt;
+
+        public string Dubt
+        {
+            get => _dubt;
+            set
+            {
+                _dubt = value;
+                OnPropertyChanged("Dubt");
+            }
+        }
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Dentistry_CRM.ViewModels
 {
-    class BaseViewModel
-    {
+    public class BaseViewModel
+    { 
+
     }
 }
