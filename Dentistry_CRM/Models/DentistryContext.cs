@@ -9,11 +9,19 @@ namespace Dentistry_CRM.Models
     {
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<Reception> Receptions { get; set; }
 
         public DentistryContext() : base("DentistryContext")
         {
             Database.SetInitializer<DentistryContext>(new DropCreateDatabaseAlways<DentistryContext>());
-            //MessageBox.Show(s);
+            
+            Database.CreateIfNotExists();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+
         }
     }
 }

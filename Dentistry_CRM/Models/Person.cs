@@ -4,13 +4,10 @@ using System.Runtime.CompilerServices;
 
 namespace Dentistry_CRM.Models
 {
-    public class Person : INotifyPropertyChanged
-    {
-        
+    public class Person : Base
+    {     
         private string _fullname;
         private string _phone;
-
-        public Guid Id { get; set; }
 
         public string Fullname
         {
@@ -29,13 +26,6 @@ namespace Dentistry_CRM.Models
                 _phone = value;
                 OnPropertyChanged("Phone");
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
