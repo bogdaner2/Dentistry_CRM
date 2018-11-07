@@ -2,15 +2,15 @@
 {
     public class Patient : Person
     {
-        private string _dubt;
+        private int _debt;
 
-        public string Dubt
+        public int Debt
         {
-            get => _dubt;
+            get => _debt;
             set
             {
-                _dubt = value;
-                OnPropertyChanged("Dubt");
+                _debt = value;
+                OnPropertyChanged("Debt");
             }
         }
     }

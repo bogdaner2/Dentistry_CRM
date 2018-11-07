@@ -4,10 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Calendar HorizontalAlignment="Left" x:Name="Calendar"  Margin="10,10,0,0" SelectedDatesChanged="calendar_SelectedDatesChanged" VerticalAlignment="Top" Height="189"/>
-        <GridSplitter HorizontalAlignment="Left" Height="376" Margin="217,10,0,0" VerticalAlignment="Top" Width="4"/>
-
+        Title="MainWindow" Height="600" Width="1034">
+    <Grid Background="AliceBlue">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.55*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Calendar HorizontalAlignment="Left" x:Name="Calendar" Grid.Column="0" Grid.RowSpan="3" Margin="10,0,0,0" SelectedDatesChanged="calendar_SelectedDatesChanged" VerticalAlignment="Top" Height="212" Width="254" Grid.Row="1"/>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5,4,0,4" Grid.Column="1" Grid.ColumnSpan="2">
+                <Button Background="White" Foreground="Firebrick" FontSize="20" Width="175" Content="Календарь"/>
+                <Button Background="White" Foreground="Firebrick" FontSize="20" Width="175" Content="Создать чек" />
+                <Button Background="White" Foreground="Firebrick" FontSize="20" Width="175" Content="Пациенты"/>
+                <Button Background="White" Foreground="Firebrick" FontSize="20" Width="175"  Content="Настройки" />
+            </StackPanel>
+            <GridSplitter Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Height="540" Grid.RowSpan="7" VerticalAlignment="Top" Width="5" Margin="269,1,0,0"/>
+            <Label Content="Label" Grid.Column="0" HorizontalAlignment="Left" Margin="125,37.704,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+            <ListBox Name="FirstChair" ItemsSource="{Binding Path=vm.list}" HorizontalAlignment="Left" Height="458" Margin="287,35,0,0" Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" VerticalAlignment="Top" Width="352" Grid.ColumnSpan="2">
+                <StackPanel Height="34" Width="342">
+                    <Label Content="{Binding Path=Debt}"></Label>
+                </StackPanel>
+            </ListBox>
+            <ListBox Name="SecondChair" Grid.Column="2" HorizontalAlignment="Left" Height="458" Margin="0.6,35,0,0" Grid.Row="1" Grid.RowSpan="6" VerticalAlignment="Top" Width="352"/>
+            <Label Content="Кресло №1" Foreground="Firebrick" Grid.Column="0" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="287,1,31.4,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Grid.ColumnSpan="2"/>
+            <Label Content="Кресло №2" Foreground="Firebrick" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0.543,3,20.257,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2" Width="352"/>
+        </Grid>
     </Grid>
 </Window>
