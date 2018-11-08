@@ -6,7 +6,17 @@ namespace Dentistry_CRM.Models
 {
     public class Base : INotifyPropertyChanged
     {
-        public Guid Id { get; set; }
+        private Guid _id;
+
+        public Guid Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged("Id");
+            }
+        }
 
         public Base()
         {
@@ -16,8 +26,7 @@ namespace Dentistry_CRM.Models
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
