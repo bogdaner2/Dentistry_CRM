@@ -7,19 +7,26 @@ namespace Dentistry_CRM.ViewModels
 {
     public class ScheduleViewModel : BaseViewModel
     {
-        private readonly IMongoDataContext _context;
-        private readonly IRepository<Patient> _repository;
-        public ObservableCollection<Patient> List { get; set; }
+        private readonly MongoRepository<Patient> _repository;
+        public ObservableCollection<Patient> PatientsList { get; set; }
 
         public ScheduleViewModel()
         {
-            _context = new MongoDataContext();
-            _repository = new MongoRepository<Patient>(_context);
+            IMongoDataContext context = new MongoDataContext();
+            _repository = new MongoRepository<Patient>(context);
         }
 
-        public async Task GetColl()
+        /// <summary>
+        /// Free times files by empty appointments
+        /// </summary>
+        /// <returns></returns>
+        public async Task GetDayAppointments()
         {
-            List = new ObservableCollection<Patient>(await _repository.GetAllAsync());
+            PatientsList = new ObservableCollection<Patient>(await _repository.GetAllAsync());
+            for (int i = 0; i < 12 - PatientsList.Count; i++)
+            {
+                PatientsList.Add(new Patient());
+            }
         }
 
         public async Task AddAppointment(Appointment appointment)

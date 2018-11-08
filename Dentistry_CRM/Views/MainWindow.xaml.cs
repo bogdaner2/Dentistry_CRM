@@ -1,6 +1,5 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Navigation;
 using Dentistry_CRM.ViewModels;
 
 
@@ -8,27 +7,18 @@ namespace Dentistry_CRM.Views
 {
     public partial class MainWindow : Window
     {
-        public ScheduleViewModel Vm { get; set; }
+        public static NavigationService NavService;
+
         public MainWindow()
         {
             InitializeComponent();
-            Vm = new ScheduleViewModel();
+            NavService = Main.NavigationService;
+            NavService.Navigate(new ScheduleView());
         }
 
-        private async void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        private void BtnSchedule_OnClick(object sender, RoutedEventArgs e)
         {
-            DateTime? selectedDate = Calendar.SelectedDate;
-
-            MessageBox.Show(selectedDate.Value.Date.ToShortDateString());
-            
-            await Vm.GetColl();
-
-            FirstChair.ItemsSource = Vm.List;
-        }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
+            NavService.Navigate(new ScheduleView());
         }
     }
 }

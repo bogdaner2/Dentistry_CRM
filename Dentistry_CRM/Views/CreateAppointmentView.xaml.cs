@@ -12,17 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Dentistry_CRM.ViewModels;
 
 namespace Dentistry_CRM.Views
 {
     /// <summary>
     /// Interaction logic for PageCreate.xaml
     /// </summary>
-    public partial class PageCreate : Page
+    public partial class CreateAppointemtnView : Page
     {
-        public PageCreate()
+        public ScheduleViewModel vm { get; set; }
+        public CreateAppointemtnView()
         {
             InitializeComponent();
+            vm = new ScheduleViewModel();
         }
     }
 }
