@@ -27,6 +27,7 @@ namespace Dentistry_CRM.ViewModels
             {
                 PatientsList.Add(new Patient());
             }
+            await _repository.CreateAsync(new Patient { Fullname = " TEST" });
         }
 
         public async Task AddAppointment(Appointment appointment)
