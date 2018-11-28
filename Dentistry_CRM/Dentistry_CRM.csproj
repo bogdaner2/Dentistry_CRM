@@ -84,6 +84,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\Seed.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="Views\CreateAppointmentView.xaml.cs">
       <DependentUpon>CreateAppointmentView.xaml</DependentUpon>
     </Compile>

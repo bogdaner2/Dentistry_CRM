@@ -9,8 +9,11 @@
       Title="PageCreate">
 
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="213,222,0,0" VerticalAlignment="Top" Width="373" Height="47"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="213,103,0,0" VerticalAlignment="Top" Width="373"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="213,72,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="373"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="213,313,0,0" VerticalAlignment="Top" Width="373" Height="47"/>
+        <ListBox HorizontalAlignment="Left" Height="100" Margin="213,100,0,0" VerticalAlignment="Top" Width="373"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="213,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="373"/>
+        <!-- Select Doctor-->
+        <!-- Select Type-->
+        
     </Grid>
 </Page>

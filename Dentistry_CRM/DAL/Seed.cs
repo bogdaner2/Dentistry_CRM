@@ -21,19 +21,18 @@ namespace Dentistry_CRM.DAL
         {
             if (_patientRepository.CountDocuments() == 0)
             {
-                await _patientRepository.CreateAsync(new Patient { });
-                await _patientRepository.CreateAsync(new Patient { });
-                await _patientRepository.CreateAsync(new Patient { });
-                await _patientRepository.CreateAsync(new Patient { });
+                await _patientRepository.CreateAsync(new Patient { Fullname = "Петро Федорович" , Debt = 0 , Phone = "+380950000098"});
+                await _patientRepository.CreateAsync(new Patient { Fullname = "Олександр Федорович", Debt = 100, Phone = "+380950000100" });
+                await _patientRepository.CreateAsync(new Patient { Fullname = "Микита Федорович", Debt = -50, Phone = "+380950000111" });
+                await _patientRepository.CreateAsync(new Patient { Fullname = "Олег Федорович", Debt = 700, Phone = "+380950000000" });
 
             }
 
             if (_doctorRepository.CountDocuments() == 0)
             {
-                await _doctorRepository.CreateAsync(new Doctor { });
-                await _doctorRepository.CreateAsync(new Doctor { });
-                await _doctorRepository.CreateAsync(new Doctor { });
-                await _doctorRepository.CreateAsync(new Doctor { });
+                await _doctorRepository.CreateAsync(new Doctor { Fullname = "Петро Федорович",Chair = 1, Phone = "+380950000098" });
+                await _doctorRepository.CreateAsync(new Doctor { Fullname = "Петро Федорович",Chair = 1,Phone = "+380950000098" });
+                await _doctorRepository.CreateAsync(new Doctor { Fullname = "Петро Федорович", Chair = 2,Phone = "+380950000098" });
             }
 
             if (_typeRepository.CountDocuments() == 0)

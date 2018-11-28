@@ -21,11 +21,13 @@ namespace Dentistry_CRM.Views
     /// </summary>
     public partial class CreateAppointemtnView : Page
     {
-        public ScheduleViewModel vm { get; set; }
+        public ScheduleViewModel ScheduleViewModel { get; set; }
+        public AppointmentViewModel AppointmentViewModel { get; set; }
         public CreateAppointemtnView()
         {
             InitializeComponent();
-            vm = new ScheduleViewModel();
+            ScheduleViewModel = new ScheduleViewModel();
+            AppointmentViewModel = new AppointmentViewModel();
         }
     }
 }
