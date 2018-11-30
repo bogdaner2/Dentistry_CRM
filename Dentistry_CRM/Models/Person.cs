@@ -16,7 +16,7 @@ namespace Dentistry_CRM.Models
             set
             {
                 _fullname = value;
-                OnPropertyChanged("Fullname");
+                OnPropertyChanged(nameof(Fullname));
             }
         }
         public string Phone
@@ -25,7 +25,7 @@ namespace Dentistry_CRM.Models
             set
             {
                 _phone = value;
-                OnPropertyChanged("Phone");
+                OnPropertyChanged(nameof(Phone));
             }
         }
 

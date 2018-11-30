@@ -80,9 +80,17 @@ namespace Dentistry_CRM.DAL
                 throw ex;
             }
         }
-        public void InsertMany(List<TEntity> entities)
+        public async Task InsertManyAsync(List<TEntity> entities)
         {
-            Collection.InsertMany(entities);
+            try
+            {
+                await Collection.InsertManyAsync(entities);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         public async Task<TEntity> Update(TEntity entity)
@@ -116,9 +124,10 @@ namespace Dentistry_CRM.DAL
             await Collection.DeleteManyAsync(predicate);
         }
 
-        public long CountDocuments()
+        public async Task<long> CountDocumentsAsync()
         {
-            return Collection.CountDocuments(FilterDefinition<TEntity>.Empty);
+            var res = await Collection.CountDocumentsAsync(FilterDefinition<TEntity>.Empty);
+            return res;
         }
 
 

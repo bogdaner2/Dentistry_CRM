@@ -4,15 +4,14 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Dentistry_CRM.Models;
 using Dentistry_CRM.ViewModels;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace Dentistry_CRM.Views
 {
-    /// <summary>
-    /// Interaction logic for ScheduleView.xaml
-    /// </summary>
     public partial class ScheduleView : Page
     {
         public ScheduleViewModel Vm { get; set; }
+
         public ScheduleView()
         {
             InitializeComponent();
@@ -22,20 +21,21 @@ namespace Dentistry_CRM.Views
 
         private async void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            DateTime? selectedDate = Calendar.SelectedDate;
-
-            MessageBox.Show(selectedDate.Value.Date.ToShortDateString());
+            var selectedDate = Calendar.SelectedDate;
 
             await Vm.GetDayAppointments();
 
             FirstChair.ItemsSource = Vm.PatientsList;
         }
 
+        private void NavigateToAppointmentPage()
+        {
+
+        }
+
         private void BtnCreate_OnClick(object sender, RoutedEventArgs e)
         {
-            MainWindow.NavService.Navigate(new CreateAppointemtnView());
-            MainWindow.NavService.RemoveBackEntry();
-            //MessageBox.Show(((sender as Button).DataContext as Patient).Fullname);
+            
         }
     }
 }

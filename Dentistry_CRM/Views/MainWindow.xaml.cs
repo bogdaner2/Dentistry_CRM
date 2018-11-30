@@ -1,24 +1,46 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using Dentistry_CRM.ViewModels;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MenuItem = Dentistry_CRM.ViewModels.MenuItem;
 
 
 namespace Dentistry_CRM.Views
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
-        public static NavigationService NavService;
-
         public MainWindow()
         {
             InitializeComponent();
-            NavService = Main.NavigationService;
-            NavService.Navigate(new ScheduleView());
+            Navigation.Navigation.Frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
+            Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;
+
+            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/ScheduleView.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void BtnSchedule_OnClick(object sender, RoutedEventArgs e)
+        private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
         {
-            NavService.Navigate(new ScheduleView());
+            this.HamburgerMenuControl.Content = e.Content;
+            this.HamburgerMenuControl.SelectedItem = e.ExtraData ?? ((MenuViewModel)this.DataContext).GetItem(e.Uri);
+            this.HamburgerMenuControl.SelectedOptionsItem = e.ExtraData ?? ((MenuViewModel)this.DataContext).GetOptionsItem(e.Uri);
+            GoBackButton.Visibility = Navigation.Navigation.Frame.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void GoBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.GoBack();
+        }
+
+        private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
+        {
+            var menuItem = e.InvokedItem as MenuItem;
+            if (menuItem != null && menuItem.IsNavigation)
+            {
+                Navigation.Navigation.Navigate(menuItem.NavigationDestination, menuItem);
+            }
         }
     }
 }
