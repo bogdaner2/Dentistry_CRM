@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Dentistry_CRM.Models
 {
@@ -8,6 +9,7 @@ namespace Dentistry_CRM.Models
         private Guid _typeId;
         private Guid _patientId;
         private int _chair;
+        private List<Service> _services;
 
         public DateTime Time
         {
@@ -15,7 +17,7 @@ namespace Dentistry_CRM.Models
             set
             {
                 _time = value;
-                OnPropertyChanged("Time");
+                OnPropertyChanged(nameof(Time));
             }
         }
 
@@ -25,7 +27,7 @@ namespace Dentistry_CRM.Models
             set
             {
                 _typeId = value;
-                OnPropertyChanged("TypeId");
+                OnPropertyChanged(nameof(TypeId));
             }
         }
 
@@ -35,7 +37,7 @@ namespace Dentistry_CRM.Models
             set
             {
                 _patientId = value;
-                OnPropertyChanged("PatientId");
+                OnPropertyChanged(nameof(PatientId));
             }
         }
 
@@ -45,8 +47,20 @@ namespace Dentistry_CRM.Models
             set
             {
                 _chair = value;
-                OnPropertyChanged("Chair");
+                OnPropertyChanged(nameof(Chair));
             }
         }
+
+        public List<Service> Services
+        {
+            get => _services;
+            set
+            {
+                _services = value;
+                OnPropertyChanged(nameof(Services));
+            }
+        }
+
+
     }
 }

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Dentistry_CRM.DAL;
 using Dentistry_CRM.Models;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace Dentistry_CRM.ViewModels
 {
@@ -20,6 +21,16 @@ namespace Dentistry_CRM.ViewModels
         /// Free times files by empty appointments
         /// </summary>
         /// <returns></returns>
+
+
+        private async Task Get()
+        {
+            PatientsList = new ObservableCollection<Patient>(await _repository.GetAllAsync());
+            for (int i = 0; i < 12 - PatientsList.Count; i++)
+            {
+                PatientsList.Add(new Patient());
+            }
+        }
         public async Task GetDayAppointments()
         {
             PatientsList = new ObservableCollection<Patient>(await _repository.GetAllAsync());
@@ -27,12 +38,12 @@ namespace Dentistry_CRM.ViewModels
             {
                 PatientsList.Add(new Patient());
             }
-            await _repository.CreateAsync(new Patient { Fullname = " TEST" });
+            //await _repository.CreateAsync(new Patient { Fullname = " TEST" });
         }
 
         public async Task AddAppointment(Appointment appointment)
         {
-           //await _repository.CreateAsync()
+           
         }
     }
 }
