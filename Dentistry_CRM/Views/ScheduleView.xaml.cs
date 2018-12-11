@@ -1,41 +1,41 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 using Dentistry_CRM.Models;
 using Dentistry_CRM.ViewModels;
-using MahApps.Metro.Controls.Dialogs;
 
 namespace Dentistry_CRM.Views
 {
     public partial class ScheduleView : Page
     {
-        public ScheduleViewModel Vm { get; set; }
+        public ScheduleViewModel ScheduleViewModel { get; set; }
 
         public ScheduleView()
         {
             InitializeComponent();
-            
-            Vm = new ScheduleViewModel();
+            ScheduleViewModel = new ScheduleViewModel();
+            this.DataContext = ScheduleViewModel;
         }
 
         private async void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedDate = Calendar.SelectedDate;
 
-            await Vm.GetDayAppointments();
-
-            FirstChair.ItemsSource = Vm.PatientsList;
-        }
-
-        private void NavigateToAppointmentPage()
-        {
-
+            try
+            {
+                await ScheduleViewModel.GetDayAppointments(selectedDate.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnCreate_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            var b = sender as Button;
+            var data = b.DataContext as ScheduleItem;
+            Navigation.Navigation.Navigate(new Uri("Views/CreateAppointmentView.xaml", UriKind.RelativeOrAbsolute),data?.Time.ToString());
         }
     }
 }

@@ -9,6 +9,25 @@
       Title="PatientsView">
 
     <Grid>
-        <TextBlock>Patients</TextBlock>
+        <TabControl HorizontalAlignment="Left" Height="430" Margin="10,10,0,0" VerticalAlignment="Top" Width="780">
+            <TabItem Header="Пациенты">
+                <Grid>
+                    <ListBox Margin="23,10,466,14"></ListBox>
+                    <Image HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,299,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Доктора">
+                <Grid>
+                    <ListBox Margin="23,10,466,14"></ListBox>
+                    <Image HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,299,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>

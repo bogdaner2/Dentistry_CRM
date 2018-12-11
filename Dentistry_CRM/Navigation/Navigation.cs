@@ -9,14 +9,18 @@ namespace Dentistry_CRM.Navigation
 
         public static Frame Frame
         {
-            get { return _frame; }
-            set { _frame = value; }
+            get => _frame; 
+            set => _frame = value;
         }
+
+        public static object PassedData { get; set; }
+
 
         public static bool Navigate(Uri sourcePageUri, object extraData = null)
         {
             if (_frame.CurrentSource != sourcePageUri)
             {
+                PassedData = extraData;
                 return _frame.Navigate(sourcePageUri, extraData);
             }
             return true;

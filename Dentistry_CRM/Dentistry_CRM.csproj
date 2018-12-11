@@ -96,8 +96,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\Seed.cs" />
+    <Compile Include="Models\ScheduleItem.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
+    <Compile Include="MVVM\EmptyStringConverter.cs" />
     <Compile Include="Navigation\Navigation.cs" />
     <Compile Include="Services\CheckService.cs" />
     <Compile Include="Services\TransferService.cs" />
@@ -111,6 +113,9 @@
     </Compile>
     <Compile Include="Views\CreateAppointmentView.xaml.cs">
       <DependentUpon>CreateAppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreatePersonView.xaml.cs">
+      <DependentUpon>CreatePersonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InfoView.xaml.cs">
       <DependentUpon>InfoView.xaml</DependentUpon>
@@ -128,6 +133,10 @@
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\CheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreatePersonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

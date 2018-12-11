@@ -2,7 +2,18 @@
 {
     public class Service : Base
     {
-        public string Name { get; set; }
-        public double Price { get; set; }
+        private string _name;
+        private double _price;
+
+        public string Name
+        {
+            get => _name;
+            set => SetProperty(ref _name, value);
+        }
+        public double Price
+        {
+            get => _price;
+            set => SetProperty(ref _price, value);
+        }
     }
 }

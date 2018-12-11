@@ -1,20 +1,42 @@
-﻿<Page x:Class="Dentistry_CRM.Views.CreateAppointemtnView"
+﻿<Page x:Class="Dentistry_CRM.Views.CreateAppointmentView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dentistry_CRM.Views"
+      xmlns:viewModels="clr-namespace:Dentistry_CRM.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1034" Height="600" Width="1034"
       Title="PageCreate">
+    <Page.DataContext>
+        <viewModels:AppointmentViewModel>
+
+        </viewModels:AppointmentViewModel>
+    </Page.DataContext>
 
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="213,313,0,0" VerticalAlignment="Top" Width="373" Height="47"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="213,100,0,0" VerticalAlignment="Top" Width="373"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="213,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="373"/>
-        <!-- Select Doctor-->
-        <!-- Select Type-->
-        
+        <Button Content="Создать запись" HorizontalAlignment="Left" Margin="355,378,0,0" VerticalAlignment="Top" Width="373" Height="47"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Patients}" Margin="355,145,0,0" VerticalAlignment="Top" Width="373"/>
+        <Label Content="{Binding Time,StringFormat='Time : {0}'}" HorizontalAlignment="Left" Margin="402,46,0,0" VerticalAlignment="Top" />
+        <CheckBox Content="Кресло №1" x:Name="chair1" HorizontalAlignment="Left" Margin="642,73,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Кресло №2" x:Name="chair2" HorizontalAlignment="Left" Margin="642,32,0,0" VerticalAlignment="Top"/>
+        <Button Content="Новый пациент" HorizontalAlignment="Left" Margin="769,131,0,0" VerticalAlignment="Top" Width="124" Height="26"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Doctors}" Margin="355,207,0,0" VerticalAlignment="Top" Width="373"/>
+        <Button Content="Новый доктор" HorizontalAlignment="Left" Margin="769,207,0,0" VerticalAlignment="Top" Width="124" Height="26"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Types}" Margin="355,276,0,0" VerticalAlignment="Top" Width="373">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="15" Height="15" Fill="{Binding Color}"></Ellipse>
+                        <Label Content="{Binding Type}"></Label>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+            <Button Content="Новый тип" HorizontalAlignment="Left" Margin="769,276,0,0" VerticalAlignment="Top" Width="124" Height="26"/>
+        <Label Content="Выбранный тип :" HorizontalAlignment="Left" Margin="402,241,0,0" VerticalAlignment="Top"/>
+        <Label Content="Выбранный врач :" HorizontalAlignment="Left" Margin="402,176,0,0" VerticalAlignment="Top"/>
+        <Label Content="Выбранный пациент :" HorizontalAlignment="Left" Margin="402,113,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

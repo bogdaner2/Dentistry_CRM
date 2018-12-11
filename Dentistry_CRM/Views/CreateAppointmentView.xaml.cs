@@ -16,18 +16,18 @@ using Dentistry_CRM.ViewModels;
 
 namespace Dentistry_CRM.Views
 {
-    /// <summary>
-    /// Interaction logic for PageCreate.xaml
-    /// </summary>
-    public partial class CreateAppointemtnView : Page
+    public partial class CreateAppointmentView : Page
     {
-        public ScheduleViewModel ScheduleViewModel { get; set; }
+        //public ScheduleViewModel ScheduleViewModel { get; set; }
         public AppointmentViewModel AppointmentViewModel { get; set; }
-        public CreateAppointemtnView()
+        public CreateAppointmentView()
         {
             InitializeComponent();
-            ScheduleViewModel = new ScheduleViewModel();
+            //ScheduleViewModel = new ScheduleViewModel();
             AppointmentViewModel = new AppointmentViewModel();
+            AppointmentViewModel.Time = Navigation.Navigation.PassedData.ToString();
+            this.DataContext = AppointmentViewModel;
         }
+
     }
 }

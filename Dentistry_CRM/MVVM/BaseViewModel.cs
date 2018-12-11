@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Dentistry_CRM.ViewModels
+namespace Dentistry_CRM.MVVM
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

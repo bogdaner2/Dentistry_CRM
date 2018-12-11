@@ -1,21 +1,17 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using Dentistry_CRM.MVVM;
+using Dentistry_CRM.ViewModels;
 
 namespace Dentistry_CRM.Models
 {
-    public class Base : INotifyPropertyChanged
+    public class Base : BaseViewModel
     {
         private Guid _id;
 
         public Guid Id
         {
             get => _id;
-            set
-            {
-                _id = value;
-                OnPropertyChanged("Id");
-            }
+            set => SetProperty(ref _id, value);
         }
 
         public Base()
@@ -23,10 +19,5 @@ namespace Dentistry_CRM.Models
             Id = Guid.NewGuid();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }
