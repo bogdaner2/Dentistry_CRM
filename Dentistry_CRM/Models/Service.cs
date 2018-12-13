@@ -4,6 +4,7 @@
     {
         private string _name;
         private double _price;
+        private int _count;
 
         public string Name
         {
@@ -14,6 +15,12 @@
         {
             get => _price;
             set => SetProperty(ref _price, value);
+        }
+
+        public int Count
+        {
+            get => _count;
+            set => SetProperty(ref _count, value);
         }
     }
 }

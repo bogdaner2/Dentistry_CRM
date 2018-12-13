@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Dentistry_CRM.DAL;
 using Dentistry_CRM.Models;
 using Dentistry_CRM.MVVM;
-using MahApps.Metro.Controls.Dialogs;
 
 namespace Dentistry_CRM.ViewModels
 {
@@ -114,11 +112,6 @@ namespace Dentistry_CRM.ViewModels
                         };
                     }))
             );
-        }
-
-        public async Task AddAppointment(Appointment appointment)
-        {
-           
         }
     }
 }

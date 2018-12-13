@@ -8,5 +8,7 @@ namespace Dentistry_CRM.Views
         {
             InitializeComponent();
         }
+        //Preview check
+        //Set debt to person
     }
 }
