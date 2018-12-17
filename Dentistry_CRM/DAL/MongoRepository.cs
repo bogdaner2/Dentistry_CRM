@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using Dentistry_CRM.Models;
 using MongoDB.Bson;
@@ -14,21 +12,17 @@ namespace Dentistry_CRM.DAL
     {
         private string _collectionName;
         private readonly IMongoDataContext _dataContext;
-
         public string CollectionName
         {
             get => _collectionName ?? typeof(TEntity).Name;
             set => _collectionName = value;
         }
-
         private IMongoCollection<TEntity> Collection =>
             _dataContext.MongoDatabase.GetCollection<TEntity>(CollectionName);
-
         public MongoRepository(IMongoDataContext dataContext)
         {
             _dataContext = dataContext;
         }
-
         public async Task<List<TEntity>> GetAllAsync()
         {
             try
@@ -67,7 +61,6 @@ namespace Dentistry_CRM.DAL
                 throw ex;
             }
         }
-
         public async Task<TEntity> CreateAsync(TEntity item)
         {
             try
@@ -92,8 +85,7 @@ namespace Dentistry_CRM.DAL
             }
 
         }
-
-        public async Task<TEntity> Update(TEntity entity)
+        public async Task<TEntity> UpdateAsync(TEntity entity)
         {
             try
             {
@@ -106,7 +98,6 @@ namespace Dentistry_CRM.DAL
                 throw ex;
             }
         }
-
         public async Task<TEntity> DeleteAsync(Guid id)
         {
             try
@@ -119,17 +110,14 @@ namespace Dentistry_CRM.DAL
                 throw ex;
             }
         }
-        public async Task DeleteAll(Expression<Func<TEntity, bool>> predicate)
+        public async Task DeleteAllAsync(Expression<Func<TEntity, bool>> predicate)
         {
             await Collection.DeleteManyAsync(predicate);
         }
-
         public async Task<long> CountDocumentsAsync()
         {
             var res = await Collection.CountDocumentsAsync(FilterDefinition<TEntity>.Empty);
             return res;
         }
-
-
     }
 }

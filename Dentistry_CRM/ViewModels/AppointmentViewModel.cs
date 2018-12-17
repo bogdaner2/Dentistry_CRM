@@ -5,7 +5,7 @@ using Dentistry_CRM.MVVM;
 
 namespace Dentistry_CRM.ViewModels
 {
-    public class AppointmentViewModel : BaseViewModel
+    public class AppointmentViewModel : BindableBase
     {
         private string _time;
         private ObservableCollection<Patient> _patients;

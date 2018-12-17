@@ -25,7 +25,7 @@ namespace Dentistry_CRM.Views
             InitializeComponent();
             //ScheduleViewModel = new ScheduleViewModel();
             AppointmentViewModel = new AppointmentViewModel();
-            AppointmentViewModel.Time = Navigation.Navigation.PassedData.ToString();
+            AppointmentViewModel.Time = "Час прийому: " + Navigation.Navigation.PassedData.ToString();
             this.DataContext = AppointmentViewModel;
         }
 

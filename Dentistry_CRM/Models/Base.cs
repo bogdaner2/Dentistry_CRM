@@ -4,7 +4,7 @@ using Dentistry_CRM.ViewModels;
 
 namespace Dentistry_CRM.Models
 {
-    public class Base : BaseViewModel
+    public class Base : BindableBase
     {
         private Guid _id;
 

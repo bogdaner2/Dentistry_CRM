@@ -2,7 +2,7 @@
 
 namespace Dentistry_CRM.ViewModels
 {
-    public class PeopleViewModel : BaseViewModel
+    public class PeopleViewModel : BindableBase
     {
     }
 }

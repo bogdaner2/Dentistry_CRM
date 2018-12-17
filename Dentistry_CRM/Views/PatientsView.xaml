@@ -10,29 +10,66 @@
 
     <Grid>
         <TabControl x:Name="TabControl" HorizontalAlignment="Left" Height="430" Margin="10,10,0,0" VerticalAlignment="Top" Width="780">
-            <TabItem Header="Пациенты" >
+            <TabItem Header="Пацієнти" >
                 <Grid>
-                    <ListBox Margin="23,10,466,14"></ListBox>
-                    <Image HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="72"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="72"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,299,0,0" VerticalAlignment="Top" Width="72"/>
+                    <ListBox Margin="70,14,419,10">
+                        <ListBoxItem Margin="3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontSize="20" FontWeight="Bold">Микита Іванов</TextBlock>
+                                <TextBlock>+380957943935</TextBlock>
+                            </StackPanel>
+
+                        </ListBoxItem>
+                        <ListBoxItem Margin="3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontSize="20" FontWeight="Bold">Олег Степанов</TextBlock>
+                                <TextBlock>+380957943935</TextBlock>
+                            </StackPanel>
+
+                        </ListBoxItem>
+                        <ListBoxItem Margin="3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontSize="20" FontWeight="Bold" >Олексій Петрович</TextBlock>
+                                <TextBlock>+38096443935</TextBlock>
+                            </StackPanel>
+
+                        </ListBoxItem>
+                        <ListBoxItem Margin="3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontSize="20" FontWeight="Bold">Сергій Мехайлович</TextBlock>
+                                <TextBlock>+380900043935</TextBlock>
+                            </StackPanel>
+
+                        </ListBoxItem>
+                        <ListBoxItem Margin="3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontSize="20" FontWeight="Bold">Михайло Петрович</TextBlock>
+                                <TextBlock>+380956743935</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                    <Image Source="http://upenn.sigrho.com/static/website/img/brothers/default.png" HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
+                    <Label Content="ФІО: Михайло Петрович"  FontSize="15" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="199"/>
+                    <Label Content="Номер : +380957943935" FontSize="15" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="185"/>
+                    <Label Content="Борг : 100грн" FontSize="15" HorizontalAlignment="Left" Margin="496,299,0,0" VerticalAlignment="Top" Width="156"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Доктора">
+            <TabItem Header="Лікарі">
+
+            </TabItem>
+            <TabItem x:Name="createTab" Header="Створити">
                 <Grid>
-                    <ListBox Margin="23,10,466,14"></ListBox>
-                    <Image HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="72"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="72"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="496,299,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Image Source="https://sites.google.com/site/profesialikaracepoklikanna/_/rsrc/1382335472241/home/zdorovyj-obraz-zhizni-nebolshie-no-vazhnye-sekrety.jpg" HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
+                    <Button Content="Створити" Height="100" Margin="150,259,148,26"/>
+                    <TextBox Height="23" TextWrapping="Wrap" Text="" Margin="150,81,348,278"/>
+                    <TextBox Height="23" TextWrapping="Wrap" Text="" Margin="150,188,348,171"/>
+                    <TextBox Height="23" TextWrapping="Wrap" Text="" Margin="150,132,348,227"/>
+                    <Label Content="Введіть ФІО" HorizontalAlignment="Left" Margin="150,50,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Введіть номер телефону" HorizontalAlignment="Left" Margin="150,106,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Введіть посилання на фото" HorizontalAlignment="Left" Margin="150,163,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="createTab" Header="Создать">
-                <Grid>
-                    <TextBlock>Test</TextBlock>
-                </Grid>
-            </TabItem>
+
         </TabControl>
     </Grid>
 </Page>

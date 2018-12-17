@@ -3,7 +3,7 @@ using Dentistry_CRM.MVVM;
 
 namespace Dentistry_CRM.Models
 {
-    public class ScheduleItem : BaseViewModel
+    public class ScheduleItem : BindableBase
     {
         private DateTime _time;
         private string _debt;

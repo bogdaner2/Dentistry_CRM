@@ -9,14 +9,11 @@ using Dentistry_CRM.MVVM;
 
 namespace Dentistry_CRM.ViewModels
 {
-    public class ScheduleViewModel : BaseViewModel
+    public class ScheduleViewModel : BindableBase
     {
         private const int START_WORK_DAY = 9;
         private const int END_WORK_DAY = 21;
-        private readonly MongoRepository<Patient> _patientRepository;
-        private readonly MongoRepository<Doctor> _doctorRepository;
-        private readonly MongoRepository<TypeOfAppointment> _typeRepository;
-        private readonly MongoRepository<Appointment> _appointmentRepository;
+        private readonly UnitOfWork _unitOfWork;
         private ObservableCollection<ScheduleItem> _firstChair;
         private ObservableCollection<ScheduleItem> _secondChair;
 
@@ -36,17 +33,14 @@ namespace Dentistry_CRM.ViewModels
         public ScheduleViewModel()
         {
             IMongoDataContext context = new MongoDataContext();
-            _patientRepository = new MongoRepository<Patient>(context);
-            _doctorRepository = new MongoRepository<Doctor>(context);
-            _typeRepository = new MongoRepository<TypeOfAppointment>(context);
-            _appointmentRepository = new MongoRepository<Appointment>(context);
+            _unitOfWork = new UnitOfWork();
         }
 
         public async Task GetDayAppointments(DateTime date)
         {
             try
             {
-                var appointments = await _appointmentRepository
+                var appointments = await _unitOfWork.AppointmentRepository
                     .GetAllAsync(x => x.Time > date && date.AddDays(1) > x.Time);
 
                 var firstChair = appointments.Where(x => x.Chair == 1);
@@ -68,10 +62,6 @@ namespace Dentistry_CRM.ViewModels
             }
         }
 
-        /// <summary>
-        /// Free times fills by empty appointments/Should Refactor
-        /// </summary>
-        /// <returns></returns>
         private ObservableCollection<ScheduleItem> SetFreeSpots(ObservableCollection<ScheduleItem> items,DateTime date)
         {
             var startTime = date.AddHours(9);
@@ -96,9 +86,9 @@ namespace Dentistry_CRM.ViewModels
                 await Task.WhenAll(
                 appointments.Select(async x =>
                     {
-                        var patient = await _patientRepository.GetAsync(x.PatientId);
-                        var doctor = await _doctorRepository.GetAllAsync(doc => doc.Chair == x.Chair);
-                        var type = await _typeRepository.GetAsync(x.TypeId);
+                        var patient = await _unitOfWork.PatientRepository.GetAsync(x.PatientId);
+                        var doctor = await _unitOfWork.DoctorsRepository.GetAllAsync(doc => doc.Chair == x.Chair);
+                        var type = await _unitOfWork.TypesRepository.GetAsync(x.TypeId);
 
                         return new ScheduleItem
                         {

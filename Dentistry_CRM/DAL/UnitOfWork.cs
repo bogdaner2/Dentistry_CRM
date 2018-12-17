@@ -11,10 +11,12 @@ namespace Dentistry_CRM.DAL
             PatientRepository = new MongoRepository<Patient>(context);
             TypesRepository = new MongoRepository<TypeOfAppointment>(context);
             AppointmentRepository = new MongoRepository<Appointment>(context);
+            ServiceRepository = new MongoRepository<Service>(context);
         }
         public MongoRepository<Doctor> DoctorsRepository { get; private set; }
         public MongoRepository<Patient> PatientRepository { get; private set; }
         public MongoRepository<TypeOfAppointment> TypesRepository { get; private set; }
         public MongoRepository<Appointment> AppointmentRepository { get; private set; }
+        public MongoRepository<Service> ServiceRepository { get; private set; }
     }
 }

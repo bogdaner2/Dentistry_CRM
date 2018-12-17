@@ -7,7 +7,7 @@ namespace Dentistry_CRM.Navigation
     {
         private static Frame _frame;
 
-        public static Frame Frame
+        public static Frame Frame 
         {
             get => _frame; 
             set => _frame = value;

@@ -175,7 +175,7 @@
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\TypeOfAppointment.cs" />
-    <Compile Include="MVVM\BaseViewModel.cs" />
+    <Compile Include="MVVM\BindableBase.cs" />
     <Compile Include="ViewModels\ScheduleViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
