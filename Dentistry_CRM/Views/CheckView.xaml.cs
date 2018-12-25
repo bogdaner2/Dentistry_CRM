@@ -16,15 +16,12 @@ namespace Dentistry_CRM.Views
             PdfBrowser.Visibility = Visibility.Hidden;
             PdfBrowser.Navigate(new Uri("about:blank"));
         }
-        //Preview check
-        //Set debt to person
+
         public async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             PdfBrowser.Visibility = Visibility.Visible;
             var result = await ViewModel.Service.GenerateCheck(DateTime.Now, new Patient { Fullname = "Sasha Pupkin" });
-            PdfBrowser.Navigate("C:/Users/Bohdan/Desktop/t.pdf");
-            //PdfBrowser.NavigateToString(@"<HTML><IFRAME SCROLLING=""YES"" SRC=""C:/Users/Bohdan/Desktop/Sasha Pupkin.pdf""></IFRAME></HTML>");
-            
+            PdfBrowser.Navigate("C:/Users/Bohdan/Desktop/t.pdf");    
         }
     }
 }

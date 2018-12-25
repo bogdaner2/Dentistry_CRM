@@ -44,7 +44,8 @@ namespace Dentistry_CRM.DAL
             {
                 new TypeOfAppointment { Type = "Ортодонтология" , Color = "#61bd4f"},
                 new TypeOfAppointment { Type = "Хирургия", Color = "#eb5a46" },
-                new TypeOfAppointment { Type = "Терапия", Color = "#0079bf" }
+                new TypeOfAppointment { Type = "Терапия", Color = "#0079bf" },
+                new TypeOfAppointment { Type = "Огляд", Color = "DarkGoldenrod" }
             };
 
             List<Appointment> appointments = new List<Appointment>
@@ -67,6 +68,9 @@ namespace Dentistry_CRM.DAL
                 new Service { Name = "Средний кариес", Price = 350 },
                 new Service { Name = "Глубокий кариес", Price = 650 },
                 new Service { Name = "Анестизия", Price = 150 },
+                new Service { Name = "Марля", Price = 150 },
+                new Service { Name = "Прибор осмотра", Price = 350 },
+                new Service { Name = "Шприц", Price = 50 },
                 new Service { Name = "Удаление зуба", Price = 1000 }
             };
 
@@ -92,7 +96,6 @@ namespace Dentistry_CRM.DAL
 
             if (await _serviceRepository.CountDocumentsAsync() == 0)
             {
-
                 await _serviceRepository.InsertManyAsync(services);
             }
 

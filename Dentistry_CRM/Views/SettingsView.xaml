@@ -10,8 +10,9 @@
 
     <Grid>
         <TextBlock x:Name="IP" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"  Text="Settings" Margin="268,194,103,372" Width="663"></TextBlock>
-        <TextBlock x:Name="IP_Copy" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"  Text="IP адреса віддаленого компьютера : 168.135.0.1" Margin="268,356,40,211" Width="726" RenderTransformOrigin="0.5,0.5">
+
+        <TextBlock x:Name="IP_Copy1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"  Text="{Binding IP , StringFormat=IP адреса віддаленого компьютера : {0}}" Margin="268,356,40,211" Width="726" RenderTransformOrigin="0.5,0.5">
         </TextBlock>
-        <TextBox HorizontalAlignment="Center" Height="23"   TextWrapping="Wrap" Text="168.135.0.1" VerticalAlignment="Top" Width="218" Margin="284,268,298,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="{Binding IP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="218" Margin="284,268,298,0"/>
     </Grid>
 </Page>
