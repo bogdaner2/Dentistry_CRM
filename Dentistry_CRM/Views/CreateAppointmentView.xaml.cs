@@ -23,11 +23,24 @@ namespace Dentistry_CRM.Views
         public CreateAppointmentView()
         {
             InitializeComponent();
-            //ScheduleViewModel = new ScheduleViewModel();
             AppointmentViewModel = new AppointmentViewModel();
             AppointmentViewModel.Time = "Час прийому: " + Navigation.Navigation.PassedData.ToString();
             this.DataContext = AppointmentViewModel;
         }
 
+        private void Button_Patient(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(new Uri("Views/PatientsView.xaml", UriKind.RelativeOrAbsolute), "create" );
+        }
+
+        private void Button_Doctor(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(new Uri("Views/PatientsView.xaml", UriKind.RelativeOrAbsolute), "create" );
+        }
+
+        private void Button_Create_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

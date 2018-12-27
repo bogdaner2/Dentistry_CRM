@@ -28,9 +28,9 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Calendar HorizontalAlignment="Left" x:Name="Calendar" Grid.Column="0" Grid.RowSpan="4" Margin="62,35,0,0" SelectedDatesChanged="calendar_SelectedDatesChanged" VerticalAlignment="Top" Height="212" Width="234" Grid.Row="0"/>
+            <Calendar HorizontalAlignment="Left" x:Name="Calendar" Grid.Column="0" Grid.RowSpan="4" Margin="39,35,0,0" SelectedDatesChanged="calendar_SelectedDatesChanged" VerticalAlignment="Top" Height="212" Width="234" Grid.Row="0"/>
             <GridSplitter Grid.Column="0" HorizontalAlignment="Left" Height="490" Grid.RowSpan="7" VerticalAlignment="Top" Width="4" Margin="269,19,0,0"/>
-            <StackPanel Grid.Column="0"  Margin="44,0,52,21" Grid.Row="3">
+            <StackPanel Grid.Column="0"  Margin="44,27,52,21" Grid.Row="3">
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="15" Height="15" Fill="Red"></Ellipse>
                     <Label Content="Хірургія" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
@@ -47,7 +47,7 @@
                     <Ellipse Width="15" Height="15" Fill="Green"></Ellipse>
                     <Label Content="Терапія" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
                 </StackPanel>
-                
+
             </StackPanel>
             <ListBox Name="FirstChair" BorderThickness="1" ItemsSource="{Binding FirstChair,UpdateSourceTrigger=PropertyChanged}"  
                      HorizontalAlignment="Left" Height="529" Margin="287,35,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="7" VerticalAlignment="Top" Width="350" Grid.ColumnSpan="2">

@@ -103,11 +103,13 @@
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Models\ScheduleItem.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="MVVM\EmptyStringConverter.cs" />
     <Compile Include="Navigation\Navigation.cs" />
     <Compile Include="Services\CheckService.cs" />
     <Compile Include="Services\TransferService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="ViewModels\CheckViewModel.cs" />
     <Compile Include="ViewModels\MenuItem.cs" />

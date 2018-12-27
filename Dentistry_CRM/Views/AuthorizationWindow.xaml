@@ -14,8 +14,10 @@
     <Grid>
         <Label Content="DENTISTRY CRM" FontSize="40"  HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="457,122,432,0"/>
         <Button Content="Увійти" HorizontalAlignment="Left" Margin="457,351,0,0" VerticalAlignment="Top" Width="266" Height="54" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" Text="Test" VerticalAlignment="Top" Width="502" Margin="345,216,345,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" Text="************" VerticalAlignment="Top" Width="502" Margin="345,269,345,0"/>
+        <Label Content="Введіть пароль"   HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="345,269,568,0" Height="27" Width="279"/>
+        <TextBox HorizontalAlignment="Center" Height="23" x:Name="login" TextWrapping="Wrap" VerticalAlignment="Top" Width="502" Margin="345,243,345,0"/>
+        <Label Content="Введіть логін"   HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="345,211,568,0" Height="27" Width="279"/>
+        <TextBox HorizontalAlignment="Center" Height="23" x:Name="password" TextWrapping="Wrap"  VerticalAlignment="Top" Width="502" Margin="345,301,345,0"/>
 
     </Grid>
 </mah:MetroWindow>

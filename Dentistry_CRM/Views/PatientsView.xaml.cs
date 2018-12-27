@@ -10,7 +10,10 @@ namespace Dentistry_CRM.Views
         public PatientsView()
         {
             InitializeComponent();
-            createTab.IsSelected = true;
+            if ((string)Navigation.Navigation.PassedData == "create")
+            {
+                createTab.IsSelected = true;
+            }
         }
     }
 }

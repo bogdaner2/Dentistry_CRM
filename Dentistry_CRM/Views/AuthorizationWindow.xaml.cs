@@ -1,4 +1,6 @@
-﻿using MahApps.Metro.Controls;
+﻿using Dentistry_CRM.Models;
+using Dentistry_CRM.Services;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
 namespace Dentistry_CRM.Views
@@ -10,13 +12,21 @@ namespace Dentistry_CRM.Views
     {
         public AuthorizationWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();   
         }
 
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            this.ShowMessageAsync("Помилка", "Користувача с таким логіном та паролем неіснує!");
+            if(await UserService.Authorizate(new User { Login = login.Text,Password = password.Text}))
+            {
+                MainWindow mw = new MainWindow();         
+                mw.Show();
+                this.Close();
+            }
+            else
+            {
+                this.ShowMessageAsync("Помилка", "Користувача с таким логіном та паролем неіснує!");
+            }
         }
     }
 }

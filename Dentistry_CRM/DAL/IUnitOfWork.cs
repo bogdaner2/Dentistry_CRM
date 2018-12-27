@@ -8,5 +8,7 @@ namespace Dentistry_CRM.DAL
         MongoRepository<Patient> PatientRepository { get;  }
         MongoRepository<TypeOfAppointment> TypesRepository { get; }
         MongoRepository<Appointment> AppointmentRepository { get;  }
+        MongoRepository<Service> ServiceRepository { get; }
+        MongoRepository<User> UserRepository { get; }
     }
 }

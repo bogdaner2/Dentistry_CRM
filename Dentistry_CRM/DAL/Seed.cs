@@ -7,20 +7,12 @@ namespace Dentistry_CRM.DAL
 {
     public class Seed
     {
-        private static MongoRepository<Patient> _patientRepository;
-        private static MongoRepository<Doctor> _doctorRepository;
-        private static MongoRepository<TypeOfAppointment> _typeRepository;
-        private static MongoRepository<Appointment> _appointmentRepository;
-        private static MongoRepository<Service> _serviceRepository;
+        private static UnitOfWork uow;
+
 
         static Seed()
         {
-            IMongoDataContext context = new MongoDataContext();
-            _patientRepository = new MongoRepository<Patient>(context);
-            _doctorRepository = new MongoRepository<Doctor>(context);
-            _typeRepository = new MongoRepository<TypeOfAppointment>(context);
-            _appointmentRepository = new MongoRepository<Appointment>(context);
-            _serviceRepository = new MongoRepository<Service>(context);
+            uow = new UnitOfWork();
         }
 
         public static async void SeedData()
@@ -74,29 +66,40 @@ namespace Dentistry_CRM.DAL
                 new Service { Name = "Удаление зуба", Price = 1000 }
             };
 
-            if (await _patientRepository.CountDocumentsAsync() == 0)
+            List<User> users = new List<User>
             {
-                await _patientRepository.InsertManyAsync(patients);
+                new User { Login = "admin" , Password = "admin" , Role = Role.Admin},
+                new User { Login = "doctor" , Password = "doctor" , Role = Role.Doctor}
+            };
+
+            if (await uow.PatientRepository.CountDocumentsAsync() == 0)
+            {
+                await uow.PatientRepository.InsertManyAsync(patients);
             }
 
-            if (await _doctorRepository.CountDocumentsAsync() == 0)
+            if (await uow.DoctorsRepository.CountDocumentsAsync() == 0)
             {
-                await _doctorRepository.InsertManyAsync(doctors);
+                await uow.DoctorsRepository.InsertManyAsync(doctors);
             }
 
-            if (await _typeRepository.CountDocumentsAsync() == 0)
+            if (await uow.TypesRepository.CountDocumentsAsync() == 0)
             {
-                await _typeRepository.InsertManyAsync(typeOfAppointments);
+                await uow.TypesRepository.InsertManyAsync(typeOfAppointments);
             }
 
-            if (await _appointmentRepository.CountDocumentsAsync() == 0)
+            if (await uow.AppointmentRepository.CountDocumentsAsync() == 0)
             {
-                await _appointmentRepository.InsertManyAsync(appointments);     
+                await uow.AppointmentRepository.InsertManyAsync(appointments);     
             }
 
-            if (await _serviceRepository.CountDocumentsAsync() == 0)
+            if (await uow.ServiceRepository.CountDocumentsAsync() == 0)
             {
-                await _serviceRepository.InsertManyAsync(services);
+                await uow.ServiceRepository.InsertManyAsync(services);
+            }
+
+            if (await uow.UserRepository.CountDocumentsAsync() == 0)
+            {
+                await uow.UserRepository.InsertManyAsync(users);
             }
 
             patients = null;
@@ -105,11 +108,7 @@ namespace Dentistry_CRM.DAL
             typeOfAppointments = null;
             appointments = null;
 
-            _patientRepository = null;
-            _doctorRepository = null;
-            _typeRepository = null;
-            _appointmentRepository = null;
-            _serviceRepository = null;
+            uow = null;
         }
     }
 }
