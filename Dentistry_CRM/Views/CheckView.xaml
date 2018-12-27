@@ -17,7 +17,7 @@
         <Button Margin="182,30,171,518" Click="CreateCheck" >Створити</Button>
 
         <WebBrowser x:Name="PdfBrowser" Visibility="Hidden" HorizontalAlignment="Left" Height="539" Margin="95,30,0,0" VerticalAlignment="Top" Width="863"/>
-        <ListBox BorderThickness="1" HorizontalAlignment="Left" ItemsSource="{Binding Services}" Height="323" Margin="182,160,0,0" VerticalAlignment="Top" Width="314">
+        <ListBox BorderThickness="1" HorizontalAlignment="Left" ItemsSource="{Binding Services}" SelectedItem="{Binding Path=SelectedService, Mode=TwoWay}" Height="323" Margin="182,160,0,0" VerticalAlignment="Top" Width="314">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -27,7 +27,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox BorderThickness="1"  HorizontalAlignment="Left" ItemsSource="{Binding SelectedServices}" Height="323" Margin="549,160,0,0" VerticalAlignment="Top" Width="314">
+        <ListBox BorderThickness="1"  HorizontalAlignment="Left" ItemsSource="{Binding SelectedServices}" SelectedItem="{Binding Path=SelectedService, Mode=TwoWay}" Height="323" Margin="549,160,0,0" VerticalAlignment="Top" Width="314">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -40,6 +40,6 @@
         <Button Margin="457,102,538,455" Click="RemoveItem" Content="&lt;=" />
         <Button Margin="549,102,446,455" Click="AddItem" Content="=&gt;" />
         <Label Content="Введіть імя пацієнта" HorizontalAlignment="Left" FontSize="20" Margin="296,517,0,0" VerticalAlignment="Top" Width="219"/>
-        <TextBox HorizontalAlignment="Left" Height="37" Margin="549,517,0,0" TextWrapping="Wrap" Text="Олександр Петрович" VerticalAlignment="Top" Width="261"/>
+        <TextBox HorizontalAlignment="Left" Height="37" Margin="549,517,0,0" TextWrapping="Wrap" Text="{Binding PatientName , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="261"/>
     </Grid>
 </Page>

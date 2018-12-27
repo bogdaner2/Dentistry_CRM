@@ -13,7 +13,6 @@ namespace Dentistry_CRM.ViewModels
     {
         private string _ip;
 
-
         public string IP
         {
             get => _ip;

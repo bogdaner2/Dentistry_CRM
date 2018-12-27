@@ -51,14 +51,14 @@ namespace Dentistry_CRM.ViewModels
             Services = new ObservableCollection<Service>(await _uow.ServiceRepository.GetAllAsync());
         }
 
-        public void SelectService(Service ser)
+        public void SelectService()
         {
-            SelectedServices.Add(ser);
+            SelectedServices.Add(SelectedService);
         }
 
-        public void RemoveService(Service ser)
+        public void RemoveService()
         {
-            SelectedServices.Remove(ser);
+            SelectedServices.Remove(SelectedService);
         }
 
         public async void GenerateCheck()

@@ -23,17 +23,18 @@ namespace Dentistry_CRM.Views
         private async void CreateCheck(object sender, RoutedEventArgs e)
         {
             CheckViewModel.GenerateCheck();
-            PdfBrowser.Navigate("C:/Users/Bohdan/Desktop/t.pdf");
+            PdfBrowser.Visibility = Visibility;
+            PdfBrowser.Navigate($"{Environment.CurrentDirectory}/{CheckViewModel.PatientName}.pdf");
         }
 
         private void RemoveItem(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CheckViewModel.RemoveService();
         }
 
         private void AddItem(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CheckViewModel.SelectService();
         }
     }
 }
