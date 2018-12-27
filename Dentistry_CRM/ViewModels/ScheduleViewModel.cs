@@ -72,6 +72,11 @@ namespace Dentistry_CRM.ViewModels
             return new ObservableCollection<ScheduleItem>(copy.OrderBy(x => x.Time));
         }
 
+        public async void RemoveAppointment(DateTime time)
+        {
+            await _unitOfWork.AppointmentRepository.DeleteAllAsync(x => x.Time == time);
+        }
+
         private async Task<ObservableCollection<ScheduleItem>> MapAppointmentItems(IEnumerable<Appointment> appointments)
         {
             return new ObservableCollection<ScheduleItem>(

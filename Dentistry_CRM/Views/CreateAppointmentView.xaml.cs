@@ -1,30 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Dentistry_CRM.Models;
 using Dentistry_CRM.ViewModels;
 
 namespace Dentistry_CRM.Views
 {
     public partial class CreateAppointmentView : Page
     {
-        //public ScheduleViewModel ScheduleViewModel { get; set; }
         public AppointmentViewModel AppointmentViewModel { get; set; }
         public CreateAppointmentView()
         {
             InitializeComponent();
             AppointmentViewModel = new AppointmentViewModel();
-            AppointmentViewModel.Time = "Час прийому: " + Navigation.Navigation.PassedData.ToString();
+            AppointmentViewModel.Time = Navigation.Navigation.PassedData.ToString();
             this.DataContext = AppointmentViewModel;
         }
 
@@ -38,9 +27,18 @@ namespace Dentistry_CRM.Views
             Navigation.Navigation.Navigate(new Uri("Views/PatientsView.xaml", UriKind.RelativeOrAbsolute), "create" );
         }
 
-        private void Button_Create_Click(object sender, RoutedEventArgs e)
+        private async void Button_Create_Click(object sender, RoutedEventArgs e)
         {
-
+            AppointmentViewModel.CreateAppointment(new Appointment
+            {
+                PatientId = ((Patient)SelectedPatient.SelectedValue).Id,
+                TypeId = ((TypeOfAppointment)SelectedType.SelectedValue).Id,
+                Chair = chair1.IsChecked.Value 
+                    ? 1 
+                    : chair2.IsChecked.Value
+                    ? 2
+                    : 1
+            });
         }
     }
 }

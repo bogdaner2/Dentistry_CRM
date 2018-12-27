@@ -38,5 +38,12 @@ namespace Dentistry_CRM.Views
             var data = b.DataContext as ScheduleItem;
             Navigation.Navigation.Navigate(new Uri("Views/CreateAppointmentView.xaml", UriKind.RelativeOrAbsolute),data?.Time.ToString());
         }
+
+        private void BtnDeleteClick(object sender, RoutedEventArgs e)
+        {
+            var b = sender as Button;
+            var data = b.DataContext as ScheduleItem;
+            ScheduleViewModel.RemoveAppointment(data.Time);
+        }
     }
 }

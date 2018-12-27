@@ -8,20 +8,32 @@ namespace Dentistry_CRM.Views
 {
     public partial class CheckView : Page
     {
-        public CheckViewModel ViewModel { get; set; }
+        public CheckViewModel CheckViewModel { get; set; }
         public CheckView()
         {
+
             InitializeComponent();
-            ViewModel = new CheckViewModel();
+            CheckViewModel = new CheckViewModel();
+
+            this.DataContext = CheckViewModel;
             PdfBrowser.Visibility = Visibility.Hidden;
             PdfBrowser.Navigate(new Uri("about:blank"));
         }
 
-        public async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private async void CreateCheck(object sender, RoutedEventArgs e)
         {
-            PdfBrowser.Visibility = Visibility.Visible;
-            var result = await ViewModel.Service.GenerateCheck(DateTime.Now, new Patient { Fullname = "Sasha Pupkin" });
-            PdfBrowser.Navigate("C:/Users/Bohdan/Desktop/t.pdf");    
+            CheckViewModel.GenerateCheck();
+            PdfBrowser.Navigate("C:/Users/Bohdan/Desktop/t.pdf");
+        }
+
+        private void RemoveItem(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddItem(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

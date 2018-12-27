@@ -14,7 +14,8 @@ namespace Dentistry_CRM.ViewModels
 
         public MenuViewModel()
         {          
-            if (UserService.Role == 0)
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CalendarAltSolid }, Text = "Расписание", NavigationDestination = new Uri("Views/ScheduleView.xaml", UriKind.RelativeOrAbsolute) });
+            if (UserService.Role == (Role)1)
             {
                 this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid }, Text = "Настройки", NavigationDestination = new Uri("Views/SettingsView.xaml", UriKind.RelativeOrAbsolute) });
             }
@@ -22,7 +23,6 @@ namespace Dentistry_CRM.ViewModels
             {
                 this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.MoneyCheckSolid }, Text = "Создать чек", NavigationDestination = new Uri("Views/CheckView.xaml", UriKind.RelativeOrAbsolute) });
             }
-            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CalendarAltSolid }, Text = "Расписание", NavigationDestination = new Uri("Views/ScheduleView.xaml", UriKind.RelativeOrAbsolute) });
             this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UsersSolid }, Text = "Пациенты", NavigationDestination = new Uri("Views/PatientsView.xaml", UriKind.RelativeOrAbsolute) });
             this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.SyringeSolid }, Text = "Услуги", NavigationDestination = new Uri("Views/ServicesView.xaml", UriKind.RelativeOrAbsolute) });
             this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.InfoCircleSolid }, Text = "Инфо", NavigationDestination = new Uri("Views/InfoView.xaml", UriKind.RelativeOrAbsolute) });

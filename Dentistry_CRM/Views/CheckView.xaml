@@ -4,56 +4,41 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dentistry_CRM.Views"
+      xmlns:viewModels="clr-namespace:Dentistry_CRM.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1034" Height="600" Width="1034"
       Title="CheckView">
+    <Page.DataContext>
+        <viewModels:CheckViewModel>
 
+        </viewModels:CheckViewModel>
+    </Page.DataContext>
     <Grid>
-        <Button Margin="182,30,171,518" Click="ButtonBase_OnClick" >Створити</Button>
+        <Button Margin="182,30,171,518" Click="CreateCheck" >Створити</Button>
 
-        <WebBrowser x:Name="PdfBrowser" HorizontalAlignment="Left" Height="539" Margin="95,30,0,0" VerticalAlignment="Top" Width="863"/>
-        <ListBox BorderThickness="1" HorizontalAlignment="Left" Height="323" Margin="182,160,0,0" VerticalAlignment="Top" Width="314">
-            <ListBoxItem Margin="3">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20" FontWeight="Bold">Стирильний набір</TextBlock>
-                    <TextBlock>Ціна : 500</TextBlock>
-                </StackPanel>
-            </ListBoxItem>
-            <ListBoxItem Margin="3">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20" FontWeight="Bold">Марля</TextBlock>
-                    <TextBlock>Ціна : 20</TextBlock>
-                </StackPanel>
-            </ListBoxItem>
-            <ListBoxItem Margin="3">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20" FontWeight="Bold">Знеболююче</TextBlock>
-                    <TextBlock>Ціна : 50</TextBlock>
-                </StackPanel>
-            </ListBoxItem>
-            <ListBoxItem Margin="3">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20" FontWeight="Bold">Пломбування</TextBlock>
-                    <TextBlock>Ціна : 350</TextBlock>
-                </StackPanel>
-            </ListBoxItem>
+        <WebBrowser x:Name="PdfBrowser" Visibility="Hidden" HorizontalAlignment="Left" Height="539" Margin="95,30,0,0" VerticalAlignment="Top" Width="863"/>
+        <ListBox BorderThickness="1" HorizontalAlignment="Left" ItemsSource="{Binding Services}" Height="323" Margin="182,160,0,0" VerticalAlignment="Top" Width="314">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/>
+                        <TextBlock  Text="{Binding Price , StringFormat= Ціна : {0}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox BorderThickness="1"  HorizontalAlignment="Left" Height="323" Margin="549,160,0,0" VerticalAlignment="Top" Width="314">
-            <ListBoxItem Margin="3">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20" FontWeight="Bold">Стирильний набір</TextBlock>
-                    <TextBlock>Ціна : 500</TextBlock>
-                </StackPanel>
-            </ListBoxItem>
-            <ListBoxItem Margin="3">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20" FontWeight="Bold">Марля</TextBlock>
-                    <TextBlock>Ціна : 20</TextBlock>
-                </StackPanel>
-            </ListBoxItem>
+        <ListBox BorderThickness="1"  HorizontalAlignment="Left" ItemsSource="{Binding SelectedServices}" Height="323" Margin="549,160,0,0" VerticalAlignment="Top" Width="314">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/>
+                        <TextBlock  Text="{Binding Price , StringFormat= Ціна : {0}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
-        <Button Margin="457,102,538,455" Click="ButtonBase_OnClick" Content="&lt;=" />
-        <Button Margin="549,102,446,455" Click="ButtonBase_OnClick" Content="=&gt;" />
+        <Button Margin="457,102,538,455" Click="RemoveItem" Content="&lt;=" />
+        <Button Margin="549,102,446,455" Click="AddItem" Content="=&gt;" />
         <Label Content="Введіть імя пацієнта" HorizontalAlignment="Left" FontSize="20" Margin="296,517,0,0" VerticalAlignment="Top" Width="219"/>
         <TextBox HorizontalAlignment="Left" Height="37" Margin="549,517,0,0" TextWrapping="Wrap" Text="Олександр Петрович" VerticalAlignment="Top" Width="261"/>
     </Grid>

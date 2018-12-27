@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Dentistry_CRM.Models;
@@ -13,44 +14,24 @@ namespace Dentistry_CRM.Services
         public CheckService()
         {
             _document = new Document(PageSize.A6);
-            ////using (var writer = PdfWriter.GetInstance(document, new FileStream("result.pdf", FileMode.Create)))
-            ////{
-            ////    document.Open();
-
-            ////    // do some work here
-
-            ////    document.Close();
-            ////    writer.Close();
-            ////}
-
-            //var headingFont = new iTextSharp.text.Font(bf, 13, Font.BOLD);
-            //var dayFont = new iTextSharp.text.Font(bf, 11, Font.NORMAL);
-            //var mainFont = new Font(bf, 12, Font.NORMAL);
-            //var document = new Document(iTextSharp.text.PageSize.A4);
-            ////PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(Mounth + "." + year + ".pdf", FileMode.OpenOrCreate));
-            //document.Open();
-            //iTextSharp.text.Paragraph EmptyParagraph = new iTextSharp.text.Paragraph(" ");
-            ////iTextSharp.text.Paragraph para = new iTextSharp.text.Paragraph(Mounth, new Font(bf, 15, Font.BOLD));
-            //para.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
-            //document.Add(para);
-            //document.Add(EmptyParagraph);
-            //PdfPTable table = new PdfPTable(7);
         }
 
-        public async Task<string> GenerateCheck(DateTime time,Patient patient)
+        public async Task<string> GenerateCheck(DateTime time,string Name,List<Service> services)
         {
-            var name = patient.Fullname + ".pdf";
+            var name = Name + ".pdf";
             using (var writer = PdfWriter.GetInstance(_document,
                 new FileStream(name, FileMode.OpenOrCreate)))
             {
                 _document.Open();
-                BaseFont bf = BaseFont.CreateFont(@"C:/Windows/Fonts/Arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-                Paragraph emptyParagraph = new Paragraph(" ");
-                Paragraph para = new Paragraph("Стоматологія", new Font(bf));
-                para.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
+
+                var bf = BaseFont.CreateFont(@"C:/Windows/Fonts/Arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                var emptyParagraph = new Paragraph(" ");
+
+                var paragraph = new Paragraph("Стоматологія", new Font(bf));
+                paragraph.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
+
                 Chunk chunk = new Chunk("Підпис                      Дата : " + time.ToShortDateString(), new Font(bf));
                 chunk.SetUnderline(0.5f, -1.5f);
-
 
                 PdfPTable table = new PdfPTable(3);
 
@@ -70,34 +51,29 @@ namespace Dentistry_CRM.Services
                 cell.HorizontalAlignment = 1;
                 table.AddCell(cell);
 
-                cell.Phrase = new Phrase(new Chunk("1", new Font(bf)));
-                cell.HorizontalAlignment = 1;
-                table.AddCell(cell);
+                int counter = 1;
 
-                cell.Phrase = new Phrase(new Chunk("Стирильний набір", new Font(bf,10)));
-                cell.HorizontalAlignment = 1;
-                table.AddCell(cell);
+                foreach (var ser in services)
+                {
+                    cell.Phrase = new Phrase(new Chunk(counter.ToString(), new Font(bf)));
+                    cell.HorizontalAlignment = 1;
+                    table.AddCell(cell);
 
-                cell.Phrase = new Phrase(new Chunk("500", new Font(bf)));
-                cell.HorizontalAlignment = 1;
-                table.AddCell(cell);
+                    cell.Phrase = new Phrase(new Chunk(ser.Name, new Font(bf, 10)));
+                    cell.HorizontalAlignment = 1;
+                    table.AddCell(cell);
 
-                cell.Phrase = new Phrase(new Chunk("2", new Font(bf)));
-                cell.HorizontalAlignment = 1;
-                table.AddCell(cell);
+                    cell.Phrase = new Phrase(new Chunk(ser.Price.ToString(), new Font(bf)));
+                    cell.HorizontalAlignment = 1;
+                    table.AddCell(cell);
 
-                cell.Phrase = new Phrase(new Chunk("Марля", new Font(bf,10)));
-                cell.HorizontalAlignment = 1;
-                table.AddCell(cell);
-
-                cell.Phrase = new Phrase(new Chunk("20", new Font(bf)));
-                cell.HorizontalAlignment = 1;
-                table.AddCell(cell);
+                    counter++;
+                }
 
                 _document.Add(emptyParagraph);
-                _document.Add(para);
+                _document.Add(paragraph);
                 _document.Add(emptyParagraph);
-                _document.Add(new Chunk("Пацієнт : Олександр Петрович", new Font(bf)));
+                _document.Add(new Chunk($"Пацієнт : {Name}", new Font(bf)));
                 _document.Add(table);
                 _document.Add(emptyParagraph);
                 _document.Add(chunk);

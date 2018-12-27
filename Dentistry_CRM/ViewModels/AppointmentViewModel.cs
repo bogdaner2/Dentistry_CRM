@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Dentistry_CRM.DAL;
 using Dentistry_CRM.Models;
 using Dentistry_CRM.MVVM;
@@ -7,6 +8,7 @@ namespace Dentistry_CRM.ViewModels
 {
     public class AppointmentViewModel : BindableBase
     {
+        private UnitOfWork _uow;
         private string _time;
         private ObservableCollection<Patient> _patients;
         private ObservableCollection<Doctor> _doctors;
@@ -48,7 +50,13 @@ namespace Dentistry_CRM.ViewModels
             LoadData(); 
         }
 
-        public async void LoadData()
+        public async void CreateAppointment(Appointment item)
+        {
+            item.Time = DateTime.Parse(Time);
+            await _uow.AppointmentRepository.CreateAsync(item);
+        }
+
+        private async void LoadData()
         {
             Patients = new ObservableCollection<Patient>(await _patientRepository.GetAllAsync());
             Doctors = new ObservableCollection<Doctor>(await _doctorRepository.GetAllAsync());

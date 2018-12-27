@@ -17,14 +17,14 @@
 
     <Grid>
         <Button Content="Создать запись" HorizontalAlignment="Left" Margin="355,378,0,0" VerticalAlignment="Top" Width="373" Height="47" Click="Button_Create_Click"/>
-        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Patients}" Margin="355,145,0,0" VerticalAlignment="Top" Width="373"/>
-        <Label Content="{Binding Time,StringFormat='Time : {0}'}" FontSize="15" HorizontalAlignment="Left" Margin="355,40,0,0" VerticalAlignment="Top" />
+        <ComboBox HorizontalAlignment="Left" x:Name="SelectedPatient" ItemsSource="{Binding Patients}" Margin="355,145,0,0" VerticalAlignment="Top" Width="373"/>
+        <Label Content="{Binding Time}" ContentStringFormat="Час прийому : {0}" FontSize="15" HorizontalAlignment="Left" Margin="355,40,0,0" VerticalAlignment="Top" />
         <CheckBox Content="Кресло №1" x:Name="chair1" HorizontalAlignment="Left" Margin="642,73,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="Кресло №2" x:Name="chair2" HorizontalAlignment="Left" Margin="642,32,0,0" VerticalAlignment="Top"/>
         <Button Content="Новый пациент" HorizontalAlignment="Left" Margin="769,145,0,0" VerticalAlignment="Top" Width="124" Height="26" Click="Button_Patient"/>
-        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Doctors}" Margin="355,207,0,0" VerticalAlignment="Top" Width="373"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="SelectedDoctor" ItemsSource="{Binding Doctors}" Margin="355,207,0,0" VerticalAlignment="Top" Width="373"/>
         <Button Content="Новый доктор" HorizontalAlignment="Left" Margin="769,207,0,0" VerticalAlignment="Top" Width="124" Height="26" Click="Button_Doctor"/>
-        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Types}" Margin="355,276,0,0" VerticalAlignment="Top" Width="373">
+        <ComboBox HorizontalAlignment="Left" x:Name="SelectedType" ItemsSource="{Binding Types}" Margin="355,276,0,0" VerticalAlignment="Top" Width="373">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
