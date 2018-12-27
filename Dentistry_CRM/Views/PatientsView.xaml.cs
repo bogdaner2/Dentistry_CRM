@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using Dentistry_CRM.ViewModels;
 
 namespace Dentistry_CRM.Views
 {
@@ -7,10 +8,13 @@ namespace Dentistry_CRM.Views
     /// </summary>
     public partial class PatientsView : Page
     {
+        public PeopleViewModel PeopleViewModel { get; set; }
         public PatientsView()
         {
             InitializeComponent();
-            if ((string)Navigation.Navigation.PassedData == "create")
+            PeopleViewModel = new PeopleViewModel();
+            this.DataContext = PeopleViewModel;
+            if (Navigation.Navigation.PassedData is string && Navigation.Navigation.PassedData == "create")
             {
                 createTab.IsSelected = true;
             }

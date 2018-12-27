@@ -4,58 +4,55 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dentistry_CRM.Views"
+      xmlns:viewModels="clr-namespace:Dentistry_CRM.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PatientsView">
+    <Page.DataContext>
+        <viewModels:PeopleViewModel>
 
+        </viewModels:PeopleViewModel>
+    </Page.DataContext>
     <Grid>
         <TabControl x:Name="TabControl" HorizontalAlignment="Left" Height="430" Margin="10,10,0,0" VerticalAlignment="Top" Width="780">
             <TabItem Header="Пацієнти" >
                 <Grid>
-                    <ListBox Margin="70,14,419,10">
-                        <ListBoxItem Margin="3">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="20" FontWeight="Bold">Микита Іванов</TextBlock>
-                                <TextBlock>+380957943935</TextBlock>
-                            </StackPanel>
-
-                        </ListBoxItem>
-                        <ListBoxItem Margin="3">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="20" FontWeight="Bold">Олег Степанов</TextBlock>
-                                <TextBlock>+380957943935</TextBlock>
-                            </StackPanel>
-
-                        </ListBoxItem>
-                        <ListBoxItem Margin="3">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="20" FontWeight="Bold" >Олексій Петрович</TextBlock>
-                                <TextBlock>+38096443935</TextBlock>
-                            </StackPanel>
-
-                        </ListBoxItem>
-                        <ListBoxItem Margin="3">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="20" FontWeight="Bold">Сергій Мехайлович</TextBlock>
-                                <TextBlock>+380900043935</TextBlock>
-                            </StackPanel>
-
-                        </ListBoxItem>
-                        <ListBoxItem Margin="3">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontSize="20" FontWeight="Bold">Михайло Петрович</TextBlock>
-                                <TextBlock>+380956743935</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
+                    <ListBox Margin="70,14,419,10" SelectedItem="{Binding Path=SelectedPatient, Mode=TwoWay}" ItemsSource="{Binding Patients}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                        <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding Fullname}"/>
+                                        <TextBlock Text="{Binding Phone}"/>
+                                </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
-                    <Image Source="http://upenn.sigrho.com/static/website/img/brothers/default.png" HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
-                    <Label Content="ФІО: Михайло Петрович"  FontSize="15" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="199"/>
-                    <Label Content="Номер : +380957943935" FontSize="15" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="185"/>
-                    <Label Content="Борг : 100грн" FontSize="15" HorizontalAlignment="Left" Margin="496,299,0,0" VerticalAlignment="Top" Width="156"/>
+                    <Image Source="{Binding SelectedPatient.Photo}" HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
+                    <Label Content="{Binding SelectedPatient.Fullname}" ContentStringFormat="ФІО : {0}"  FontSize="15" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="199"/>
+                    <Label Content="{Binding SelectedPatient.Phone}" ContentStringFormat="Номер : {0}" FontSize="15" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="185"/>
+                    <Label Content="{Binding SelectedPatient.Debt}" ContentStringFormat="Борг : {0}" FontSize="15" HorizontalAlignment="Left" Margin="496,299,0,0" VerticalAlignment="Top" Width="156"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Лікарі">
-
+                <Grid>
+                    <ListBox Margin="70,14,419,10" SelectedItem="{Binding Path=SelectedDoctor, Mode=TwoWay}" ItemsSource="{Binding Doctors}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding Fullname}"/>
+                                        <TextBlock Text="{Binding Phone}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Image Source="{Binding SelectedDoctor.Photo}" HorizontalAlignment="Left" Height="195" Margin="480,10,0,0" VerticalAlignment="Top" Width="184"/>
+                    <Label Content="{Binding SelectedDoctor.Fullname}"   ContentStringFormat="ФІО : {0}" FontSize="15" HorizontalAlignment="Left" Margin="496,237,0,0" VerticalAlignment="Top" Width="199"/>
+                    <Label Content="{Binding SelectedDoctor.Phone}"  ContentStringFormat="Номер : {0}"  FontSize="15" HorizontalAlignment="Left" Margin="496,268,0,0" VerticalAlignment="Top" Width="185"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="createTab" Header="Створити">
                 <Grid>

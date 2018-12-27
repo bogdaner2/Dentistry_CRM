@@ -38,8 +38,6 @@ namespace Dentistry_CRM.ViewModels
 
         public async Task GetDayAppointments(DateTime date)
         {
-            try
-            {
                 var appointments = await _unitOfWork.AppointmentRepository
                     .GetAllAsync(x => x.Time > date && date.AddDays(1) > x.Time);
 
@@ -54,12 +52,6 @@ namespace Dentistry_CRM.ViewModels
 
                 if (SecondChair != null)
                     SecondChair = SetFreeSpots(SecondChair, date);
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
         private ObservableCollection<ScheduleItem> SetFreeSpots(ObservableCollection<ScheduleItem> items,DateTime date)

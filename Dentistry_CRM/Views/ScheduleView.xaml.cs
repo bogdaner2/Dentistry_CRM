@@ -14,7 +14,7 @@ namespace Dentistry_CRM.Views
         {
             InitializeComponent();
             ScheduleViewModel = new ScheduleViewModel();
-            ScheduleViewModel.GetDayAppointments(DateTime.Now);
+            ScheduleViewModel.GetDayAppointments(DateTime.Now.Date);
             this.DataContext = ScheduleViewModel;
         }
 

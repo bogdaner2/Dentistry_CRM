@@ -19,17 +19,17 @@ namespace Dentistry_CRM.DAL
         {
             List<Patient> patients = new List<Patient>
             {
-                new Patient { Fullname = "Петро Федорович" , Debt = 0 , Phone = "+380950000098"},
-                new Patient { Fullname = "Олександр Федорович", Debt = 100, Phone = "+380950000100" },
-                new Patient { Fullname = "Микита Федорович", Debt = -50, Phone = "+380950000111" },
-                new Patient { Fullname = "Олег Федорович", Debt = 700, Phone = "+380950000000" }
+                new Patient { Fullname = "Петро Федорович" , Debt = 0 , Phone = "+380950000098",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Patient { Fullname = "Олександр Федорович", Debt = 100, Phone = "+380950000100" ,Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Patient { Fullname = "Микита Федорович", Debt = -50, Phone = "+380950000111",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png" },
+                new Patient { Fullname = "Олег Федорович", Debt = 700, Phone = "+380950000000",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png" }
             };
 
             List<Doctor> doctors = new List<Doctor>
             {
-                new Doctor { Fullname = "Петро Федорович",Chair = 1, Phone = "+380950000098" },
-                new Doctor { Fullname = "Петро Федорович",Chair = 1,Phone = "+380950000098" },
-                new Doctor { Fullname = "Петро Федорович", Chair = 2,Phone = "+380950000098" }
+                new Doctor { Fullname = "Петро Федорович",Chair = 1, Phone = "+380950000098" ,Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Doctor { Fullname = "Петро Федорович",Chair = 1,Phone = "+380950000098" ,Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Doctor { Fullname = "Петро Федорович", Chair = 2,Phone = "+380950000098",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png" }
             };
 
             List<TypeOfAppointment> typeOfAppointments = new List<TypeOfAppointment>
