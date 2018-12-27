@@ -19,5 +19,10 @@ namespace Dentistry_CRM.Views
                 createTab.IsSelected = true;
             }
         }
+
+        private async void Button_CreatePeople(object sender, System.Windows.RoutedEventArgs e)
+        {
+            await PeopleViewModel.CreateNewPerson(CheckBoxDoctor.IsChecked.Value ? "doctor" : "patient");
+        }
     }
 }
