@@ -39,6 +39,7 @@ namespace Dentistry_CRM.ViewModels
 
         public AppointmentViewModel()
         {
+            _uow = new UnitOfWork();
             LoadData(); 
         }
 
