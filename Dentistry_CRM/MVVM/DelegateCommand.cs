@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace Dentistry_CRM.MVVM
 {
-    internal class DelegateCommand : ICommand
+    public class DelegateCommand : ICommand
     {
         private readonly Action _execute;
 

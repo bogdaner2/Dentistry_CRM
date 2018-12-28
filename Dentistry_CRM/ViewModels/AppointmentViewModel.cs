@@ -37,16 +37,8 @@ namespace Dentistry_CRM.ViewModels
             set => SetProperty(ref _types, value);
         }
 
-        private readonly MongoRepository<Patient> _patientRepository;
-        private readonly MongoRepository<Doctor> _doctorRepository;
-        private readonly MongoRepository<TypeOfAppointment> _typeRepository;
-
         public AppointmentViewModel()
         {
-            IMongoDataContext context = new MongoDataContext();
-            _patientRepository = new MongoRepository<Patient>(context);
-            _doctorRepository = new MongoRepository<Doctor>(context);
-            _typeRepository = new MongoRepository<TypeOfAppointment>(context);
             LoadData(); 
         }
 
@@ -58,9 +50,9 @@ namespace Dentistry_CRM.ViewModels
 
         private async void LoadData()
         {
-            Patients = new ObservableCollection<Patient>(await _patientRepository.GetAllAsync());
-            Doctors = new ObservableCollection<Doctor>(await _doctorRepository.GetAllAsync());
-            Types = new ObservableCollection<TypeOfAppointment>(await _typeRepository.GetAllAsync());
+            Patients = new ObservableCollection<Patient>(await _uow.PatientRepository.GetAllAsync());
+            Doctors = new ObservableCollection<Doctor>(await _uow.DoctorsRepository.GetAllAsync());
+            Types = new ObservableCollection<TypeOfAppointment>(await _uow.TypesRepository.GetAllAsync());
         }
     }
 }

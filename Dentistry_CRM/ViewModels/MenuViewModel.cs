@@ -15,7 +15,7 @@ namespace Dentistry_CRM.ViewModels
         public MenuViewModel()
         {          
             this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CalendarAltSolid }, Text = "Расписание", NavigationDestination = new Uri("Views/ScheduleView.xaml", UriKind.RelativeOrAbsolute) });
-            if (UserService.Role == (Role)1)
+            if (UserService.Role == 0)
             {
                 this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid }, Text = "Настройки", NavigationDestination = new Uri("Views/SettingsView.xaml", UriKind.RelativeOrAbsolute) });
             }
