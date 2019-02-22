@@ -14,51 +14,31 @@ namespace Dentistry_CRM.Models
         public DateTime Time
         {
             get => _time;
-            set
-            {
-                _time = value;
-                OnPropertyChanged(nameof(Time));
-            }
+            set => SetProperty(ref _time, value);
         }
 
         public Guid TypeId
         {
             get => _typeId;
-            set
-            {
-                _typeId = value;
-                OnPropertyChanged(nameof(TypeId));
-            }
+            set => SetProperty(ref _typeId, value);
         }
 
         public Guid PatientId
         {
             get => _patientId;
-            set
-            {
-                _patientId = value;
-                OnPropertyChanged(nameof(PatientId));
-            }
+            set => SetProperty(ref _patientId, value);
         }
 
         public int Chair
         {
             get => _chair;
-            set
-            {
-                _chair = value;
-                OnPropertyChanged(nameof(Chair));
-            }
+            set => SetProperty(ref _chair, value);
         }
 
         public List<Service> Services
         {
             get => _services;
-            set
-            {
-                _services = value;
-                OnPropertyChanged(nameof(Services));
-            }
+            set => SetProperty(ref _services, value);
         }
 
 

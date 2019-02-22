@@ -7,11 +7,7 @@
         public int Chair
         {
             get => _chair;
-            set
-            {
-                _chair = value;
-                OnPropertyChanged("Chair");
-            }
+            set => SetProperty(ref _chair, value);
         }
     }
 }

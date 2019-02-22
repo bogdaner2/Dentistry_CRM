@@ -7,44 +7,37 @@ namespace Dentistry_CRM.DAL
 {
     public class Seed
     {
-        private static MongoRepository<Patient> _patientRepository;
-        private static MongoRepository<Doctor> _doctorRepository;
-        private static MongoRepository<TypeOfAppointment> _typeRepository;
-        private static MongoRepository<Appointment> _appointmentRepository;
-        private static MongoRepository<Service> _serviceRepository;
+        private static UnitOfWork uow;
+
 
         static Seed()
         {
-            IMongoDataContext context = new MongoDataContext();
-            _patientRepository = new MongoRepository<Patient>(context);
-            _doctorRepository = new MongoRepository<Doctor>(context);
-            _typeRepository = new MongoRepository<TypeOfAppointment>(context);
-            _appointmentRepository = new MongoRepository<Appointment>(context);
-            _serviceRepository = new MongoRepository<Service>(context);
+            uow = new UnitOfWork();
         }
 
         public static async void SeedData()
         {
             List<Patient> patients = new List<Patient>
             {
-                new Patient { Fullname = "Петро Федорович" , Debt = 0 , Phone = "+380950000098"},
-                new Patient { Fullname = "Олександр Федорович", Debt = 100, Phone = "+380950000100" },
-                new Patient { Fullname = "Микита Федорович", Debt = -50, Phone = "+380950000111" },
-                new Patient { Fullname = "Олег Федорович", Debt = 700, Phone = "+380950000000" }
+                new Patient { Fullname = "Петро Федорович" , Debt = 0 , Phone = "+380950000098",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Patient { Fullname = "Олександр Федорович", Debt = 100, Phone = "+380950000100" ,Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Patient { Fullname = "Микита Федорович", Debt = -50, Phone = "+380950000111",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png" },
+                new Patient { Fullname = "Олег Федорович", Debt = 700, Phone = "+380950000000",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png" }
             };
 
             List<Doctor> doctors = new List<Doctor>
             {
-                new Doctor { Fullname = "Петро Федорович",Chair = 1, Phone = "+380950000098" },
-                new Doctor { Fullname = "Петро Федорович",Chair = 1,Phone = "+380950000098" },
-                new Doctor { Fullname = "Петро Федорович", Chair = 2,Phone = "+380950000098" }
+                new Doctor { Fullname = "Петро Федорович",Chair = 1, Phone = "+380950000098" ,Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Doctor { Fullname = "Петро Федорович",Chair = 1,Phone = "+380950000098" ,Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png"},
+                new Doctor { Fullname = "Петро Федорович", Chair = 2,Phone = "+380950000098",Photo = "http://upenn.sigrho.com/static/website/img/brothers/default.png" }
             };
 
             List<TypeOfAppointment> typeOfAppointments = new List<TypeOfAppointment>
             {
                 new TypeOfAppointment { Type = "Ортодонтология" , Color = "#61bd4f"},
                 new TypeOfAppointment { Type = "Хирургия", Color = "#eb5a46" },
-                new TypeOfAppointment { Type = "Терапия", Color = "#0079bf" }
+                new TypeOfAppointment { Type = "Терапия", Color = "#0079bf" },
+                new TypeOfAppointment { Type = "Огляд", Color = "DarkGoldenrod" }
             };
 
             List<Appointment> appointments = new List<Appointment>
@@ -67,33 +60,46 @@ namespace Dentistry_CRM.DAL
                 new Service { Name = "Средний кариес", Price = 350 },
                 new Service { Name = "Глубокий кариес", Price = 650 },
                 new Service { Name = "Анестизия", Price = 150 },
+                new Service { Name = "Марля", Price = 150 },
+                new Service { Name = "Прибор осмотра", Price = 350 },
+                new Service { Name = "Шприц", Price = 50 },
                 new Service { Name = "Удаление зуба", Price = 1000 }
             };
 
-            if (await _patientRepository.CountDocumentsAsync() == 0)
+            List<User> users = new List<User>
             {
-                await _patientRepository.InsertManyAsync(patients);
+                new User { Login = "admin" , Password = "admin" , Role = Role.Admin},
+                new User { Login = "doctor" , Password = "doctor" , Role = Role.Doctor}
+            };
+
+            if (await uow.PatientRepository.CountDocumentsAsync() == 0)
+            {
+                await uow.PatientRepository.InsertManyAsync(patients);
             }
 
-            if (await _doctorRepository.CountDocumentsAsync() == 0)
+            if (await uow.DoctorsRepository.CountDocumentsAsync() == 0)
             {
-                await _doctorRepository.InsertManyAsync(doctors);
+                await uow.DoctorsRepository.InsertManyAsync(doctors);
             }
 
-            if (await _typeRepository.CountDocumentsAsync() == 0)
+            if (await uow.TypesRepository.CountDocumentsAsync() == 0)
             {
-                await _typeRepository.InsertManyAsync(typeOfAppointments);
+                await uow.TypesRepository.InsertManyAsync(typeOfAppointments);
             }
 
-            if (await _appointmentRepository.CountDocumentsAsync() == 0)
+            if (await uow.AppointmentRepository.CountDocumentsAsync() == 0)
             {
-                await _appointmentRepository.InsertManyAsync(appointments);     
+                await uow.AppointmentRepository.InsertManyAsync(appointments);     
             }
 
-            if (await _serviceRepository.CountDocumentsAsync() == 0)
+            if (await uow.ServiceRepository.CountDocumentsAsync() == 0)
             {
+                await uow.ServiceRepository.InsertManyAsync(services);
+            }
 
-                await _serviceRepository.InsertManyAsync(services);
+            if (await uow.UserRepository.CountDocumentsAsync() == 0)
+            {
+                await uow.UserRepository.InsertManyAsync(users);
             }
 
             patients = null;
@@ -102,11 +108,7 @@ namespace Dentistry_CRM.DAL
             typeOfAppointments = null;
             appointments = null;
 
-            _patientRepository = null;
-            _doctorRepository = null;
-            _typeRepository = null;
-            _appointmentRepository = null;
-            _serviceRepository = null;
+            uow = null;
         }
     }
 }

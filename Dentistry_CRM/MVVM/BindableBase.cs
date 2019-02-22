@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Dentistry_CRM.ViewModels
+namespace Dentistry_CRM.MVVM
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BindableBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)

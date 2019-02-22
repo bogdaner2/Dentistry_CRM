@@ -11,7 +11,7 @@ namespace Dentistry_CRM.DAL
 
         Task<TEntity> CreateAsync(TEntity entity);
 
-        Task<TEntity> Update(TEntity entity);
+        Task<TEntity> UpdateAsync(TEntity entity);
 
         Task<TEntity> DeleteAsync(Guid id);
 

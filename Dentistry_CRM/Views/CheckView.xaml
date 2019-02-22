@@ -4,11 +4,42 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dentistry_CRM.Views"
+      xmlns:viewModels="clr-namespace:Dentistry_CRM.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1034" Height="600" Width="1034"
       Title="CheckView">
+    <Page.DataContext>
+        <viewModels:CheckViewModel>
 
+        </viewModels:CheckViewModel>
+    </Page.DataContext>
     <Grid>
-        <TextBlock>Check</TextBlock>
+        <Button Margin="182,30,171,518" Click="CreateCheck" >Створити</Button>
+
+        <WebBrowser x:Name="PdfBrowser" Visibility="Hidden" HorizontalAlignment="Left" Height="539" Margin="95,30,0,0" VerticalAlignment="Top" Width="863"/>
+        <ListBox BorderThickness="1" HorizontalAlignment="Left" ItemsSource="{Binding Services}" SelectedItem="{Binding Path=SelectedService, Mode=TwoWay}" Height="323" Margin="182,160,0,0" VerticalAlignment="Top" Width="314">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/>
+                        <TextBlock  Text="{Binding Price , StringFormat= Ціна : {0}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox BorderThickness="1"  HorizontalAlignment="Left" ItemsSource="{Binding SelectedServices}" SelectedItem="{Binding Path=SelectedService, Mode=TwoWay}" Height="323" Margin="549,160,0,0" VerticalAlignment="Top" Width="314">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/>
+                        <TextBlock  Text="{Binding Price , StringFormat= Ціна : {0}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Margin="457,102,538,455" Click="RemoveItem" Content="&lt;=" />
+        <Button Margin="549,102,446,455" Click="AddItem" Content="=&gt;" />
+        <Label Content="Введіть імя пацієнта" HorizontalAlignment="Left" FontSize="20" Margin="296,517,0,0" VerticalAlignment="Top" Width="219"/>
+        <TextBox HorizontalAlignment="Left" Height="37" Margin="549,517,0,0" TextWrapping="Wrap" Text="{Binding PatientName , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="261"/>
     </Grid>
 </Page>

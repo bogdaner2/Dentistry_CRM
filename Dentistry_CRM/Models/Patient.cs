@@ -7,11 +7,7 @@
         public int Debt
         {
             get => _debt;
-            set
-            {
-                _debt = value;
-                OnPropertyChanged("Debt");
-            }
+            set => SetProperty(ref _debt,value);
         }
     }
 }

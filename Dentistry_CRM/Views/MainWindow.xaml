@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         xmlns:viewModels="clr-namespace:Dentistry_CRM.ViewModels"
         WindowStartupLocation="CenterScreen"
-        Title="SDM Dente" Height="700" Width="1200">
+        Title="Dentestry CRM" Height="700" Width="1200">
 
     <mah:MetroWindow.DataContext>
         <viewModels:MenuViewModel />

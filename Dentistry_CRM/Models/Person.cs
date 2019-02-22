@@ -9,26 +9,29 @@ namespace Dentistry_CRM.Models
         
         private string _fullname;
         private string _phone;
+        private string _photo;
 
         public string Fullname
         {
             get => _fullname;
-            set
-            {
-                _fullname = value;
-                OnPropertyChanged(nameof(Fullname));
-            }
+            set => SetProperty(ref _fullname, value);
+        }
+
+        public string Photo
+        {
+            get => _photo;
+            set => SetProperty(ref _photo, value);
         }
         public string Phone
         {
             get => _phone;
-            set
-            {
-                _phone = value;
-                OnPropertyChanged(nameof(Phone));
-            }
+            set => SetProperty(ref _phone, value);
         }
 
+        public override string ToString()
+        {
+            return $"{Fullname} | {Phone}";
+        }
 
     }
 }

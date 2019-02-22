@@ -9,6 +9,6 @@
       Title="InfoView">
 
     <Grid>
-        <TextBlock>Info</TextBlock>
+        <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold" VerticalAlignment="Center">CREATED BY BOHDAN KONORIN</TextBlock>
     </Grid>
 </Page>

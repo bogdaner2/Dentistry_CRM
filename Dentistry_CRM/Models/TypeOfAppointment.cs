@@ -8,21 +8,13 @@
         public string Type
         {
             get => _type;
-            set
-            {
-                _type = value;
-                OnPropertyChanged("Type");
-            }
+            set => SetProperty(ref _type, value);
         }
 
         public string Color
         {
             get => _color;
-            set
-            {
-                _color = value;
-                OnPropertyChanged("Color");
-            }
+            set => SetProperty(ref _color, value);
         }
     }
 }

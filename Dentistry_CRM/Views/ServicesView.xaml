@@ -9,6 +9,6 @@
       Title="ServicesPage">
 
     <Grid>
-        <TextBlock>Services</TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">Services under development</TextBlock>
     </Grid>
 </Page>

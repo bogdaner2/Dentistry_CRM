@@ -4,7 +4,7 @@ using Dentistry_CRM.MVVM;
 
 namespace Dentistry_CRM.ViewModels
 {
-    public class MenuItem : BaseViewModel
+    public class MenuItem : BindableBase
     {
         private object _icon;
         private string _text;
